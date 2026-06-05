@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-primary: #555035;
+  --color-primary-container: #6e684b;
+  --color-background: #fdf9f4;
+  --color-surface-container: #f2ede9;
+  --color-on-surface: #1c1b19;
+  --color-secondary: #635e56;
+  --color-on-secondary: #ffffff;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #f1e8c3;
+  --color-surface-container-high: #ece7e3;
+  --color-surface-container-low: #f7f3ee;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-highest: #e6e2dd;
+  --color-outline: #7b776c;
+  --color-outline-variant: #cbc6b9;
+  --color-on-surface-variant: #49473d;
+  --color-surface-bright: #fdf9f4;
+  --color-surface-dim: #ded9d5;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --spacing-sp-xs: 4px;
+  --spacing-sp-lg: 48px;
+  --spacing-sp-base: 8px;
+  --spacing-sp-sm: 12px;
+  --spacing-sp-xl: 80px;
+  --spacing-container-max: 1200px;
+  --spacing-sp-md: 24px;
+  --spacing-gutter: 24px;
+
+  --font-headline: var(--font-headline);
+  --font-body: var(--font-body);
+
+  /* Custom Font Sizes from Stitch Design System */
+  --text-body-md: 1rem;
+  --text-body-lg: 1.125rem;
+  --text-headline-sm: 1.5rem;
+  --text-headline-md: 2rem;
+  --text-headline-lg: 2.5rem;
+  --text-headline-xl: 4rem;
+  --text-label-lg: 0.875rem;
+
+  /* Explicitly define width theme variables to resolve collision with spacing scale */
+  --width-xs: 20rem;
+  --width-sm: 24rem;
+  --width-md: 28rem;
+  --width-lg: 32rem;
+  --width-xl: 36rem;
+  --width-2xl: 42rem;
+  --width-3xl: 48rem;
+  --width-4xl: 56rem;
+  --width-5xl: 64rem;
+  --width-6xl: 72rem;
+  --width-7xl: 80rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #555035;
+  border-radius: 10px;
+}
+
+/* Masonry Grid Styles */
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: 10px;
+  gap: 24px;
+}
+.masonry-item {
+  grid-row-end: span 22;
+}
+.masonry-item.tall {
+  grid-row-end: span 42;
+}
+.masonry-item.medium {
+  grid-row-end: span 32;
+}
+.masonry-item.short {
+  grid-row-end: span 26;
+}
+
+.image-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Page fade-in classes */
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Styles for header scroll */
+.header-scroll {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
 }
